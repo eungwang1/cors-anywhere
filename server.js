@@ -9,6 +9,15 @@ var port = process.env.PORT || 8080;
 // use originWhitelist instead.
 var originBlacklist = parseEnvList(process.env.CORSANYWHERE_BLACKLIST);
 var originWhitelist = parseEnvList(process.env.CORSANYWHERE_WHITELIST);
+
+var http = require("http");
+setInterval(function () {
+    console.log("every 10 minute");
+    http.get("https://korgathershop.herokuapp.com/");
+}, 600000);
+
+
+
 function parseEnvList(env) {
   if (!env) {
     return [];
